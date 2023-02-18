@@ -32,7 +32,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-     
+        
         var parent: ImagePicker
      
         init(_ parent: ImagePicker) {
@@ -48,6 +48,7 @@ struct ImagePicker: UIViewControllerRepresentable {
      
             parent.presentationMode.wrappedValue.dismiss()
         }
+        
     }
     
     func makeCoordinator() -> Coordinator {
