@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		D9299BB029A031B500D92A34 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9299BAF29A031B500D92A34 /* ImagePicker.swift */; };
+		D95D339F29A08C8800A32EAE /* Sport Detection.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D95D339E29A08C8800A32EAE /* Sport Detection.mlmodel */; };
 		D9F3B2D9299EEEF000B3D7FA /* Sport_IdentificationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3B2D8299EEEF000B3D7FA /* Sport_IdentificationApp.swift */; };
 		D9F3B2DB299EEEF000B3D7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F3B2DA299EEEF000B3D7FA /* ContentView.swift */; };
 		D9F3B2DD299EEEF100B3D7FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F3B2DC299EEEF100B3D7FA /* Assets.xcassets */; };
 		D9F3B2E0299EEEF200B3D7FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F3B2DF299EEEF200B3D7FA /* Preview Assets.xcassets */; };
-		D9F3B2E9299EF4C600B3D7FA /* Sport Detection.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D9F3B2E8299EF4C500B3D7FA /* Sport Detection.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D9299BAF29A031B500D92A34 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D95D339E29A08C8800A32EAE /* Sport Detection.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Sport Detection.mlmodel"; sourceTree = "<group>"; };
 		D9F3B2D5299EEEF000B3D7FA /* Sport Identification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sport Identification.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F3B2D8299EEEF000B3D7FA /* Sport_IdentificationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport_IdentificationApp.swift; sourceTree = "<group>"; };
 		D9F3B2DA299EEEF000B3D7FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9F3B2DC299EEEF100B3D7FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9F3B2DF299EEEF200B3D7FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D9F3B2E8299EF4C500B3D7FA /* Sport Detection.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Sport Detection.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 				D9F3B2D8299EEEF000B3D7FA /* Sport_IdentificationApp.swift */,
 				D9F3B2DA299EEEF000B3D7FA /* ContentView.swift */,
 				D9299BAF29A031B500D92A34 /* ImagePicker.swift */,
-				D9F3B2E8299EF4C500B3D7FA /* Sport Detection.mlmodel */,
+				D95D339E29A08C8800A32EAE /* Sport Detection.mlmodel */,
 				D9F3B2DC299EEEF100B3D7FA /* Assets.xcassets */,
 				D9F3B2DE299EEEF200B3D7FA /* Preview Content */,
 			);
@@ -145,7 +145,7 @@
 			files = (
 				D9F3B2DB299EEEF000B3D7FA /* ContentView.swift in Sources */,
 				D9299BB029A031B500D92A34 /* ImagePicker.swift in Sources */,
-				D9F3B2E9299EF4C600B3D7FA /* Sport Detection.mlmodel in Sources */,
+				D95D339F29A08C8800A32EAE /* Sport Detection.mlmodel in Sources */,
 				D9F3B2D9299EEEF000B3D7FA /* Sport_IdentificationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

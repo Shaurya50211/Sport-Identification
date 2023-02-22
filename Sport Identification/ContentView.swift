@@ -14,60 +14,69 @@ struct ContentView: View {
     @State var imageSelected = UIImage()
     @State var sportLabel = ""
     var body: some View {
-        VStack {
-            Button {
-                pickImage = true
-                openCameraRoll = true
-            } label: {
-                Text("Identify Sport")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Image(systemName: "questionmark.app")
-                    .font(.title)
-                    .bold()
+        GeometryReader { geometry in
+            ZStack {
+                AsyncImage(url: URL(string: "https://source.unsplash.com/\(Float(geometry.size.width).clean)x\(Float(geometry.size.height+100).clean)/?\(sportLabel == "" ? "jungle" : sportLabel)"))
+                    .ignoresSafeArea()
+                    .onAppear {
+                        print("Height: \(Float(geometry.size.height).clean)\nWidth: \(Float(geometry.size.width).clean)")
+                    }
+                VStack {
+                    Button {
+                        pickImage = true
+                        openCameraRoll = true
+                    } label: {
+                        Text("Identify Sport")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Image(systemName: "questionmark.app")
+                            .font(.title)
+                            .bold()
+                    }
+                    .clipShape(Capsule())
+                    .foregroundColor(.yellow)
+                    .buttonStyle(.borderedProminent)
+                    
+                    // MARK: Image Taken
+                    Image(uiImage: imageSelected)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 350)
+                        .cornerRadius(10)
+                        .padding(.top)
+                    
+                    // MARK: Sport Class
+                    Text(sportLabel)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                    
+                }.sheet(isPresented: $openCameraRoll) {
+                    recognizeImage()
+                } content: {
+                    ImagePicker(selectedImage: $imageSelected, sourceType: .camera)
+                }
             }
-            .clipShape(Capsule())
-            .foregroundColor(.yellow)
-            .buttonStyle(.borderedProminent)
-            
-            // MARK: Image Taken
-            Image(uiImage: imageSelected)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 350)
-                .cornerRadius(10)
-                .padding(.top)
-            
-            // MARK: Sport Class
-            Text(sportLabel)
-                .font(.largeTitle)
-                .fontWeight(.black)
-            
-        }.sheet(isPresented: $openCameraRoll) {
-            ImagePicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
         }
     }
     
     // MARK: Indetify the sport using model
     func recognizeImage() {
-        let config = MLModelConfiguration()
         
         do {
             // init the model
-            let model = try Sport_Detection(configuration: config)
-            if let goodImage = buffer(from: imageSelected) {
-                print("got converted")
-                let prediction = try model.prediction(image: goodImage)
-                print(prediction.classLabel.description)
-                // set prediction text to label
-                sportLabel = prediction.classLabel.description
-            } else {
-                print("can not be converted")
+            let model = try Sport_Detection(configuration: MLModelConfiguration())
+            
+            guard let buffer = buffer(from: imageSelected) else {
+                return
             }
             
+            let prediction = try model.prediction(image: buffer)
+            
+            sportLabel = prediction.classLabel.description
+            
         } catch {
-            print(error)
-            sportLabel = "Oops, error loding model!"
+            print(error.localizedDescription)
+            sportLabel = "Oops, error loading model!"
         }
         
     }
@@ -94,6 +103,7 @@ struct ContentView: View {
         UIGraphicsPopContext()
         CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
         
+        ContentView().recognizeImage()
         return pixelBuffer
     }
     
@@ -102,5 +112,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension Float {
+    var clean: String {
+       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }
